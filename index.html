@@ -5,10 +5,381 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Omkar Jadhav – Portfolio</title>
   <link rel="stylesheet" href="css/style.css" />
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    
+   /* ───────────────────────────────────────── */
+/* PROJECT DETAIL PAGES — MATCH MAIN THEME */
+/* ───────────────────────────────────────── */
+
+#project-pages{
+  display:none;
+  min-height:100vh;
+  background:var(--clr-bg);
+  color:var(--clr-text);
+}
+
+body.project-open #main-site{
+  display:none;
+}
+
+body.project-open #project-pages{
+  display:block;
+}
+
+/* NAV */
+
+.detail-nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  height:var(--nav-h);
+  background:rgba(13,17,23,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--clr-border);
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:0 1.5rem;
+}
+
+.detail-back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.55rem 1rem;
+  border-radius:var(--radius-sm);
+  background:var(--clr-surface);
+  border:1px solid var(--clr-border);
+  color:var(--clr-text);
+  font-size:.88rem;
+  font-weight:600;
+  transition:var(--transition);
+}
+
+.detail-back-btn:hover{
+  border-color:var(--clr-primary);
+  color:var(--clr-primary);
+  transform:translateY(-2px);
+}
+
+.detail-nav-title{
+  color:var(--clr-muted);
+  font-size:.9rem;
+  font-weight:500;
+}
+
+/* PAGE */
+
+.detail-page{
+  display:none;
+}
+
+.detail-page.active{
+  display:block;
+}
+
+.detail-wrap{
+  max-width:950px;
+  margin:auto;
+  padding:4rem 1.5rem;
+}
+
+/* HERO */
+
+.dp-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:.35rem .9rem;
+  border-radius:999px;
+  background:rgba(88,166,255,.1);
+  border:1px solid rgba(88,166,255,.2);
+  color:var(--clr-primary);
+  font-size:.78rem;
+  font-weight:600;
+  margin-bottom:1.25rem;
+}
+
+.dp-title{
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  line-height:1.1;
+  font-weight:800;
+  margin-bottom:1rem;
+
+  background:linear-gradient(
+    135deg,
+    var(--clr-text),
+    var(--clr-primary)
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.dp-tagline{
+  color:var(--clr-muted);
+  font-size:1rem;
+  line-height:1.8;
+  max-width:700px;
+  margin-bottom:2rem;
+}
+
+/* BUTTONS */
+
+.dp-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-bottom:3rem;
+}
+
+.dp-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.7rem 1.3rem;
+  border-radius:var(--radius-sm);
+  font-size:.9rem;
+  font-weight:600;
+  transition:var(--transition);
+}
+
+.dp-btn-primary{
+  background:var(--clr-primary);
+  color:#0d1117;
+}
+
+.dp-btn-primary:hover{
+  background:var(--clr-primary-d);
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(88,166,255,.35);
+}
+
+.dp-btn-outline{
+  border:1px solid var(--clr-border);
+  color:var(--clr-text);
+}
+
+.dp-btn-outline:hover{
+  border-color:var(--clr-primary);
+  color:var(--clr-primary);
+  transform:translateY(-2px);
+}
+
+/* SECTIONS */
+
+.dp-section{
+  margin-bottom:3rem;
+}
+
+.dp-section-title{
+  font-size:.82rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--clr-primary);
+  margin-bottom:1rem;
+  font-weight:700;
+}
+
+/* CARDS */
+
+.dp-card{
+  background:var(--clr-surface);
+  border:1px solid var(--clr-border);
+  border-radius:var(--radius);
+  padding:1.8rem;
+  box-shadow:var(--shadow);
+}
+
+.dp-card p{
+  color:var(--clr-muted);
+  line-height:1.9;
+}
+
+.dp-card p + p{
+  margin-top:1rem;
+}
+
+.dp-card strong{
+  color:var(--clr-text);
+}
+
+/* FEATURES */
+
+.dp-features{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.dp-features li{
+  display:flex;
+  gap:1rem;
+  background:var(--clr-surface);
+  border:1px solid var(--clr-border);
+  border-radius:var(--radius);
+  padding:1.25rem;
+  transition:var(--transition);
+}
+
+.dp-features li:hover{
+  border-color:var(--clr-primary);
+  transform:translateY(-3px);
+}
+
+.dp-feat-icon{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:rgba(88,166,255,.1);
+  border:1px solid rgba(88,166,255,.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--clr-primary);
+  flex-shrink:0;
+}
+
+.dp-feat-body strong{
+  display:block;
+  color:var(--clr-text);
+  margin-bottom:.3rem;
+}
+
+.dp-feat-body span{
+  color:var(--clr-muted);
+  line-height:1.7;
+  font-size:.92rem;
+}
+
+/* TIMELINE */
+
+.dp-timeline{
+  display:flex;
+  flex-direction:column;
+}
+
+.dp-tl-item{
+  position:relative;
+  padding:1rem 0 1rem 1.5rem;
+  border-left:1px solid var(--clr-border);
+}
+
+.dp-tl-item::before{
+  content:'';
+  position:absolute;
+  left:-5px;
+  top:1.4rem;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--clr-primary);
+}
+
+.dp-tl-phase{
+  color:var(--clr-primary);
+  font-size:.75rem;
+  font-weight:700;
+  margin-bottom:.3rem;
+  text-transform:uppercase;
+}
+
+.dp-tl-desc{
+  color:var(--clr-muted);
+  line-height:1.7;
+  font-size:.92rem;
+}
+
+/* TECH STACK */
+
+.dp-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+}
+
+.dp-pill{
+  background:var(--clr-tag-bg);
+  border:1px solid var(--clr-border);
+  color:var(--clr-text);
+  padding:.45rem .9rem;
+  border-radius:999px;
+  font-size:.82rem;
+  transition:var(--transition);
+}
+
+.dp-pill:hover{
+  border-color:var(--clr-primary);
+  color:var(--clr-primary);
+}
+
+/* METRICS */
+
+.dp-metrics{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:1rem;
+}
+
+.dp-metric{
+  background:var(--clr-surface);
+  border:1px solid var(--clr-border);
+  border-radius:var(--radius);
+  padding:1.5rem;
+  text-align:center;
+  transition:var(--transition);
+}
+
+.dp-metric:hover{
+  transform:translateY(-4px);
+  border-color:var(--clr-primary);
+}
+
+.dp-metric-val{
+  font-size:1.8rem;
+  font-weight:800;
+  color:var(--clr-primary);
+}
+
+.dp-metric-label{
+  margin-top:.5rem;
+  color:var(--clr-muted);
+  font-size:.82rem;
+}
+
+/* VIEW HINT */
+
+.proj-view-hint{
+  margin-top:.8rem;
+  color:var(--clr-primary);
+  font-size:.82rem;
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+}
+
+/* MOBILE */
+
+@media(max-width:680px){
+
+  .detail-wrap{
+    padding:2rem 1rem 4rem;
+  }
+
+  .dp-features li{
+    flex-direction:column;
+  }
+
+}
+  </style>
 </head>
 <body>
+
+<!-- ================================================================ -->
+<!-- MAIN SITE  — 100% original HTML, untouched                       -->
+<!-- ================================================================ -->
+<div id="main-site">
 
   <!-- ========== NAVIGATION ========== -->
   <nav id="navbar">
@@ -32,7 +403,6 @@
     <div class="hero-inner">
       <div class="profile-img-wrapper">
         <img id="profile-img" src="assets/profile.jpg" alt="Omkar Jadhav" onerror="this.src='assets/avatar-placeholder.svg'" />
-        <!-- Admin upload button (hidden by default) -->
         <label id="upload-label" class="upload-btn" title="Upload Profile Photo" style="display:none;">
           <i class="fa fa-camera"></i>
           <input type="file" id="photo-upload" accept="image/*" style="display:none;" />
@@ -122,7 +492,6 @@
     <div class="section-inner">
       <h2 class="section-title">Projects</h2>
 
-      <!-- Admin: Add Project button (hidden by default) -->
       <div id="admin-add-btn-wrapper" style="display:none; margin-bottom:1.5rem;">
         <button class="btn btn-primary" id="open-add-project-modal">
           <i class="fa-solid fa-plus"></i> Add Project
@@ -132,7 +501,7 @@
       <div class="projects-grid" id="projects-grid">
 
         <!-- Project 1: GrowKaro -->
-        <div class="project-card" data-id="growkaro">
+        <div class="project-card" data-id="growkaro" style="cursor:pointer;">
           <div class="project-header">
             <h3>GrowKaro</h3>
             <span class="project-tag">AI &middot; ML</span>
@@ -145,17 +514,18 @@
             <li>Received software copyright recognition for novel AI-driven competitive analysis methodology.</li>
           </ul>
           <div class="project-links">
-            <a href="https://github.com/SwainDias/Growkaro-/tree/main" target="_blank" rel="noopener noreferrer" class="link-badge">
+            <a href="https://github.com/SwainDias/Growkaro-/tree/main" target="_blank" rel="noopener noreferrer" class="link-badge" onclick="event.stopPropagation()">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a href="https://drive.google.com/file/d/17ItjD2Jw8OjY8Ev7rXCNSxPsJSJ4EgZf/view" target="_blank" rel="noopener noreferrer" class="link-badge link-badge-alt">
+            <a href="https://drive.google.com/file/d/17ItjD2Jw8OjY8Ev7rXCNSxPsJSJ4EgZf/view" target="_blank" rel="noopener noreferrer" class="link-badge link-badge-alt" onclick="event.stopPropagation()">
               <i class="fa-solid fa-certificate"></i> Copyright
             </a>
           </div>
+          <p class="proj-view-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Click card to view full details</p>
         </div>
 
         <!-- Project 2: FloatChat -->
-        <div class="project-card" data-id="floatchat">
+        <div class="project-card" data-id="floatchat" style="cursor:pointer;">
           <div class="project-header">
             <h3>FloatChat</h3>
             <span class="project-tag">AI &middot; NLP</span>
@@ -167,14 +537,15 @@
             <li>Optimized latency through efficient prompt engineering and lightweight model orchestration.</li>
           </ul>
           <div class="project-links">
-            <a href="https://github.com/Omkar-Pandurang-Jadhav/floatchat" target="_blank" rel="noopener noreferrer" class="link-badge">
+            <a href="https://github.com/Omkar-Pandurang-Jadhav/floatchat" target="_blank" rel="noopener noreferrer" class="link-badge" onclick="event.stopPropagation()">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
           </div>
+          <p class="proj-view-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Click card to view full details</p>
         </div>
 
         <!-- Project 3: CrickHero -->
-        <div class="project-card" data-id="crickhero">
+        <div class="project-card" data-id="crickhero" style="cursor:pointer;">
           <div class="project-header">
             <h3>CrickHero</h3>
             <span class="project-tag">Analytics &middot; Data</span>
@@ -186,10 +557,11 @@
             <li>Processed and normalized large historical datasets to enable fast, reliable query responses.</li>
           </ul>
           <div class="project-links">
-            <a href="https://github.com/Omkar-Pandurang-Jadhav/CrickHero" target="_blank" rel="noopener noreferrer" class="link-badge">
+            <a href="https://github.com/Omkar-Pandurang-Jadhav/CrickHero" target="_blank" rel="noopener noreferrer" class="link-badge" onclick="event.stopPropagation()">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
           </div>
+          <p class="proj-view-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Click card to view full details</p>
         </div>
 
       </div><!-- /projects-grid -->
@@ -229,7 +601,6 @@
   <footer>
     <div class="footer-inner">
       <p>&copy; 2025 Omkar Jadhav. All rights reserved.</p>
-      <!-- Hidden admin toggle: triple-click the copyright text -->
       <p class="admin-hint" id="admin-toggle" title="Admin">
         <i class="fa-solid fa-lock" id="admin-lock-icon"></i>
       </p>
@@ -273,6 +644,440 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+</div><!-- /#main-site -->
+
+
+<!-- ================================================================ -->
+<!-- PROJECT DETAIL PAGES                                              -->
+<!-- ================================================================ -->
+<div id="project-pages">
+
+  <!-- shared sticky top-bar -->
+  <div class="detail-nav">
+    <button class="detail-back-btn" id="detail-back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+    </button>
+    <span class="detail-nav-title" id="detail-nav-title"></span>
+  </div>
+
+  <!-- ──────────── GROWKARO ──────────── -->
+  <div class="detail-page" id="dp-growkaro">
+    <div class="detail-wrap">
+
+      <div class="dp-tag">AI &middot; ML &middot; NLP &middot; Business Intelligence</div>
+      <h1 class="dp-title">GrowKaro</h1>
+      <p class="dp-tagline">An AI-powered competitor intelligence platform that turns raw market data into actionable strategic insights — in real time.</p>
+      <div class="dp-links">
+        <a href="https://github.com/SwainDias/Growkaro-/tree/main" target="_blank" rel="noopener noreferrer" class="dp-btn dp-btn-primary">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="https://drive.google.com/file/d/17ItjD2Jw8OjY8Ev7rXCNSxPsJSJ4EgZf/view" target="_blank" rel="noopener noreferrer" class="dp-btn dp-btn-outline">
+          <i class="fa-solid fa-certificate"></i> Software Copyright
+        </a>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Overview</div>
+        <div class="dp-card">
+          <p>GrowKaro is a full-stack AI platform built to solve a real problem for startups and small businesses: understanding what competitors are doing without spending hours on manual research. The system automatically collects data from competitor websites and social channels, processes it through NLP pipelines, and surfaces the most relevant insights through a conversational AI interface.</p>
+          <p>The project received <strong>Software Copyright recognition from the Government of India</strong> for its novel AI-driven competitive analysis methodology — a formal validation of the technical approach.</p>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Key Features</div>
+        <ul class="dp-features">
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-spider"></i></div>
+            <div class="dp-feat-body">
+              <strong>Real-Time Web Scraping Pipeline</strong>
+              <span>Automated scrapers continuously monitor competitor websites, product pages, and pricing updates. Data is normalized and stored for downstream analysis.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="dp-feat-body">
+              <strong>NLP-Based Sentiment Analysis</strong>
+              <span>Customer reviews, social mentions, and market commentary are processed through sentiment models to quantify brand perception and track shifts over time.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-comments"></i></div>
+            <div class="dp-feat-body">
+              <strong>Conversational AI Intelligence Layer</strong>
+              <span>A natural language interface lets business users ask plain-English questions and receive structured, contextual answers backed by live competitor data.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-brands fa-docker"></i></div>
+            <div class="dp-feat-body">
+              <strong>Microservices Architecture with Docker</strong>
+              <span>Each component — scraper, NLP engine, AI chat, database — runs in isolated Docker containers enabling independent scaling and fault-tolerant deployments.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-certificate"></i></div>
+            <div class="dp-feat-body">
+              <strong>Government of India Software Copyright</strong>
+              <span>The unique methodology for AI-driven competitive intelligence was formally recognized and awarded a software copyright — establishing intellectual property of the approach.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Architecture</div>
+        <div class="dp-card">
+          <div class="dp-timeline">
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Data Layer</div>
+              <div class="dp-tl-desc"><strong>Web Scraping Engine</strong> — Scheduled crawlers fetch structured and unstructured data from competitor sources, handling rate-limiting and data deduplication.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Processing</div>
+              <div class="dp-tl-desc"><strong>NLP Pipeline</strong> — Raw text is cleaned, tokenized, and passed through sentiment classification and entity extraction to produce structured insight records.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Storage</div>
+              <div class="dp-tl-desc"><strong>Database Layer</strong> — Processed insights persisted in a relational database, indexed for fast retrieval and trend computation.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">AI Interface</div>
+              <div class="dp-tl-desc"><strong>Conversational Layer</strong> — A RAG-style interface retrieves relevant insight chunks and generates coherent, accurate responses to user queries about market conditions.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Deployment</div>
+              <div class="dp-tl-desc"><strong>Docker Compose</strong> — All services orchestrated via Docker, enabling reproducible deployment with minimal configuration.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Tech Stack</div>
+        <div class="dp-pills">
+          <span class="dp-pill">Python</span>
+          <span class="dp-pill">NLP / spaCy</span>
+          <span class="dp-pill">Sentiment Analysis</span>
+          <span class="dp-pill">Web Scraping</span>
+          <span class="dp-pill">Docker</span>
+          <span class="dp-pill">Microservices</span>
+          <span class="dp-pill">PostgreSQL</span>
+          <span class="dp-pill">REST APIs</span>
+          <span class="dp-pill">RAG</span>
+          <span class="dp-pill">Conversational AI</span>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Outcomes</div>
+        <div class="dp-metrics">
+          <div class="dp-metric"><div class="dp-metric-val">∞</div><div class="dp-metric-label">Real-time monitoring</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">©</div><div class="dp-metric-label">Govt. of India Copyright</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">5+</div><div class="dp-metric-label">Microservices deployed</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">NLP</div><div class="dp-metric-label">Sentiment + NER</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /#dp-growkaro -->
+
+
+  <!-- ──────────── FLOATCHAT ──────────── -->
+  <div class="detail-page" id="dp-floatchat">
+    <div class="detail-wrap">
+
+      <div class="dp-tag">AI &middot; NLP &middot; RAG &middot; Chatbot</div>
+      <h1 class="dp-title">FloatChat</h1>
+      <p class="dp-tagline">A domain-specific scientific conversational assistant powered by retrieval-augmented generation — delivering accurate, grounded answers to complex queries.</p>
+      <div class="dp-links">
+        <a href="https://github.com/Omkar-Pandurang-Jadhav/floatchat" target="_blank" rel="noopener noreferrer" class="dp-btn dp-btn-primary">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Overview</div>
+        <div class="dp-card">
+          <p>FloatChat is a specialized conversational AI built to handle complex scientific and technical questions with precision. Unlike general-purpose chatbots that may hallucinate or give vague answers, FloatChat grounds every response in retrieved factual sources through a Retrieval-Augmented Generation (RAG) architecture.</p>
+          <p>The system was built with a focus on response accuracy, low latency, and the ability to reason over structured knowledge — making it suitable for research assistance, technical Q&amp;A, and educational support in scientific domains.</p>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Key Features</div>
+        <ul class="dp-features">
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="dp-feat-body">
+              <strong>Retrieval-Augmented Generation (RAG)</strong>
+              <span>Before generating any answer, FloatChat retrieves the most semantically relevant passages from a curated knowledge base — ensuring factually grounded responses.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-flask"></i></div>
+            <div class="dp-feat-body">
+              <strong>Scientific Domain Specialization</strong>
+              <span>Fine-tuned and prompted to handle complex scientific terminology, multi-step reasoning, and technical concepts across physics, chemistry, biology, and engineering.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="dp-feat-body">
+              <strong>Low-Latency Response Optimization</strong>
+              <span>Prompt engineering, chunk-size tuning, and efficient embedding retrieval combine to keep response times fast even for complex multi-turn conversations.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="dp-feat-body">
+              <strong>Structured Reasoning</strong>
+              <span>The chatbot thinks step-by-step through complex queries, breaking down multi-part questions before composing a final answer — improving coherence and accuracy.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-comments"></i></div>
+            <div class="dp-feat-body">
+              <strong>Multi-Turn Conversation Handling</strong>
+              <span>FloatChat maintains conversational context across turns, allowing users to ask follow-up questions naturally without re-stating context each time.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">How It Works</div>
+        <div class="dp-card">
+          <div class="dp-timeline">
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">User Query</div>
+              <div class="dp-tl-desc"><strong>Input Processing</strong> — The user's question is pre-processed. Entity recognition and classification determine the retrieval strategy.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Retrieval</div>
+              <div class="dp-tl-desc"><strong>Semantic Search</strong> — Query converted to a dense embedding vector; top-k most relevant chunks retrieved from the vector knowledge base.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Augmentation</div>
+              <div class="dp-tl-desc"><strong>Context Assembly</strong> — Retrieved chunks assembled into a structured prompt alongside the original question and conversation history.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Generation</div>
+              <div class="dp-tl-desc"><strong>LLM Response</strong> — The augmented prompt is sent to the language model, which generates a grounded response constrained by the provided context.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Output</div>
+              <div class="dp-tl-desc"><strong>Formatted Answer</strong> — Response returned with optional source attribution for full transparency about what knowledge was used.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Tech Stack</div>
+        <div class="dp-pills">
+          <span class="dp-pill">Python</span>
+          <span class="dp-pill">LLM Orchestration</span>
+          <span class="dp-pill">RAG Pipeline</span>
+          <span class="dp-pill">Vector Embeddings</span>
+          <span class="dp-pill">Prompt Engineering</span>
+          <span class="dp-pill">NLP</span>
+          <span class="dp-pill">Semantic Search</span>
+          <span class="dp-pill">Multi-turn Dialogue</span>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Design Principles</div>
+        <div class="dp-metrics">
+          <div class="dp-metric"><div class="dp-metric-val">RAG</div><div class="dp-metric-label">Grounded responses</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">↓ms</div><div class="dp-metric-label">Optimized latency</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">∞</div><div class="dp-metric-label">Multi-turn context</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">0</div><div class="dp-metric-label">Hallucination target</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /#dp-floatchat -->
+
+
+  <!-- ──────────── CRICKHERO ──────────── -->
+  <div class="detail-page" id="dp-crickhero">
+    <div class="detail-wrap">
+
+      <div class="dp-tag">Analytics &middot; Data Engineering &middot; Statistics</div>
+      <h1 class="dp-title">CrickHero</h1>
+      <p class="dp-tagline">A cricket analytics dashboard that transforms raw match data into rich visual insights — from player form trends to match outcome predictions.</p>
+      <div class="dp-links">
+        <a href="https://github.com/Omkar-Pandurang-Jadhav/CrickHero" target="_blank" rel="noopener noreferrer" class="dp-btn dp-btn-primary">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Overview</div>
+        <div class="dp-card">
+          <p>CrickHero is a data analytics platform for cricket enthusiasts, analysts, and fantasy sports players. It processes large historical match datasets to produce meaningful visualizations and predictive insights not typically available in mainstream cricket apps.</p>
+          <p>The project demonstrates end-to-end data engineering — from ingesting raw CSV data through normalization, statistical modeling, and interactive visualization — all optimized for fast query responses over large datasets.</p>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Key Features</div>
+        <ul class="dp-features">
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="dp-feat-body">
+              <strong>Interactive Performance Dashboard</strong>
+              <span>Batting averages, strike rates, bowling economy, and wicket-taking patterns visualized across Test, ODI, and T20 formats with filterable, interactive charts.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div class="dp-feat-body">
+              <strong>Form Trend Analysis</strong>
+              <span>Statistical rolling averages and momentum indicators surface whether a player is in peak form, declining, or recovering — directly informing team selection and fantasy picks.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="dp-feat-body">
+              <strong>Match Outcome Prediction</strong>
+              <span>Statistical models trained on historical head-to-head records, venue conditions, and team composition data generate match outcome probabilities with meaningful accuracy.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="dp-feat-body">
+              <strong>Normalized Historical Dataset</strong>
+              <span>Raw match data from multiple formats and eras cleaned, deduplicated, and normalized into a consistent schema — enabling cross-format comparisons and longitudinal analysis.</span>
+            </div>
+          </li>
+          <li>
+            <div class="dp-feat-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="dp-feat-body">
+              <strong>Optimized Query Performance</strong>
+              <span>Proper indexing, aggregated materialized views, and query caching ensure fast responses even when analyzing decades of match data across thousands of players.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Data Pipeline</div>
+        <div class="dp-card">
+          <div class="dp-timeline">
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Ingestion</div>
+              <div class="dp-tl-desc"><strong>Raw Data Collection</strong> — Historical match data sourced from public cricket datasets in CSV format, covering multiple formats and years of professional play.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Cleaning</div>
+              <div class="dp-tl-desc"><strong>Data Normalization</strong> — Inconsistent spellings, missing values, format inconsistencies, and duplicates resolved through automated cleaning scripts.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Modeling</div>
+              <div class="dp-tl-desc"><strong>Statistical Analysis</strong> — Rolling averages, batting/bowling ratings, and outcome prediction models computed and stored as derived tables for fast lookup.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Storage</div>
+              <div class="dp-tl-desc"><strong>Relational Database</strong> — Normalized schema with foreign keys linking players, teams, matches, and innings for efficient multi-dimensional queries.</div>
+            </div>
+            <div class="dp-tl-item">
+              <div class="dp-tl-phase">Visualization</div>
+              <div class="dp-tl-desc"><strong>Interactive Dashboard</strong> — Charts and tables rendered dynamically based on user-selected filters: player, format, date range, and venue.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Tech Stack</div>
+        <div class="dp-pills">
+          <span class="dp-pill">Python</span>
+          <span class="dp-pill">SQL</span>
+          <span class="dp-pill">PostgreSQL</span>
+          <span class="dp-pill">Pandas</span>
+          <span class="dp-pill">Statistical Modeling</span>
+          <span class="dp-pill">Data Visualization</span>
+          <span class="dp-pill">Data Cleaning</span>
+          <span class="dp-pill">Dashboard Design</span>
+        </div>
+      </div>
+
+      <div class="dp-section">
+        <div class="dp-section-title">Scale &amp; Scope</div>
+        <div class="dp-metrics">
+          <div class="dp-metric"><div class="dp-metric-val">3</div><div class="dp-metric-label">Cricket formats covered</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">10k+</div><div class="dp-metric-label">Historical records</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">5+</div><div class="dp-metric-label">Predictive models</div></div>
+          <div class="dp-metric"><div class="dp-metric-val">↓ms</div><div class="dp-metric-label">Optimized queries</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /#dp-crickhero -->
+
+</div><!-- /#project-pages -->
+
+
+<!-- Your original JS — loads and runs exactly as before -->
+<script src="js/main.js"></script>
+
+<!-- Project routing script — runs after main.js, no conflicts -->
+<script>
+(function () {
+  var labels = { growkaro: 'GrowKaro', floatchat: 'FloatChat', crickhero: 'CrickHero' };
+
+  function openProject(id) {
+    if (!document.getElementById('dp-' + id)) return;
+    document.querySelectorAll('.detail-page').forEach(function (p) { p.classList.remove('active'); });
+    document.getElementById('dp-' + id).classList.add('active');
+    document.body.classList.add('project-open');
+    document.getElementById('detail-nav-title').textContent = labels[id] || '';
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    history.pushState({ project: id }, '', '#project-' + id);
+  }
+
+  function closeProject() {
+    document.body.classList.remove('project-open');
+    document.querySelectorAll('.detail-page').forEach(function (p) { p.classList.remove('active'); });
+    history.pushState({}, '', '#projects');
+    var sec = document.getElementById('projects');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* click on any project card */
+  document.querySelectorAll('.project-card[data-id]').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('.link-badge')) return; /* let GitHub/Copyright links open normally */
+      openProject(card.dataset.id);
+    });
+  });
+
+  /* back button in detail nav */
+  document.getElementById('detail-back-btn').addEventListener('click', closeProject);
+
+  /* browser back / forward */
+  window.addEventListener('popstate', function () {
+    var hash = window.location.hash;
+    if (hash.startsWith('#project-')) {
+      var id = hash.replace('#project-', '');
+      if (labels[id]) { openProject(id); return; }
+    }
+    if (document.body.classList.contains('project-open')) closeProject();
+  });
+
+  /* deep-link on page load */
+  (function () {
+    var hash = window.location.hash;
+    if (hash.startsWith('#project-')) {
+      var id = hash.replace('#project-', '');
+      if (labels[id]) openProject(id);
+    }
+  })();
+})();
+</script>
+
 </body>
 </html>
